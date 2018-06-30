@@ -79,5 +79,31 @@ namespace Tests
 
             Assert.Equal(100, queue.Count);
         }
+
+        [Fact]
+        public void WillEnumerateItemsInOrder() {
+            var queue = new MyQueue<int>();
+
+            queue.Enqueue(1000);
+            queue.Enqueue(1001);
+            queue.Enqueue(1002);
+
+            queue.Dequeue();
+
+            queue.Enqueue(5000);
+
+            queue.Dequeue();
+            queue.Dequeue();
+            
+            queue.Enqueue(1000);
+            queue.Enqueue(1001);
+            queue.Enqueue(1002);
+
+            int count = 0;
+            int[] correctOrder = new int[4] { 5000, 1000, 1001, 1002 };
+            foreach (var item in queue) {
+                Assert.Equal(correctOrder[count++], item);
+            }
+        }
     }
 }

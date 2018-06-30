@@ -64,7 +64,9 @@ namespace Examples {
         public T Peek() => items[head % items.Length];
 
         public IEnumerator<T> GetEnumerator() {
-            return items.ToList().GetEnumerator();
+            for (var i = 0; i < size; i++) {
+                yield return items[head + i % items.Length];
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator() {
