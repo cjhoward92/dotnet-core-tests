@@ -15,7 +15,7 @@ namespace Examples {
 
         private bool ShouldIncreaseArraySize() => size + 1 == items.Length;
         
-        private bool ShouldDecreaseArraySize() => size > 0 && items.Length > MIN_SIZE && size <= items.Length / 4;
+        private bool ShouldDecreaseArraySize() => items.Length > MIN_SIZE && size <= items.Length / 4;
 
         private void TryResizeInternalArray() {
             int newLength = 0;
