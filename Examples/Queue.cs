@@ -70,7 +70,7 @@ namespace Examples {
         }
 
         IEnumerator IEnumerable.GetEnumerator() {
-            return items.GetEnumerator();
+            return this.GetEnumerator();
         }
     }
 }
